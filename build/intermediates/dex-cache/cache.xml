@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/exploded-aar/com.github.orangegangsters/swipy/1.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3139f7aa9cc345a67faeca13d7fa15115b9a94dd">
+        <dex dex="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/pre-dexed/release/com.github.orangegangsters-swipy-1.2.0_d636fcd10d239eeed7ce3f58815fed11d96e1b31.jar" />
+    </item>
+    <item
+        jar="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/pre-dexed/release/internal_impl-23.1.1_c4e608a818048208d8a7da456b605e014c10fecb.jar" />
+    </item>
+    <item
+        jar="/Users/jorgesanmartin/.gradle/caches/modules-2/files-2.1/de.greenrobot/eventbus/2.4.0/ddd166d01b3158d1c00576d29f7ed15c030df719/eventbus-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddd166d01b3158d1c00576d29f7ed15c030df719">
+        <dex dex="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/pre-dexed/release/eventbus-2.4.0_bc643f95c4663c920085331ff8cd90c91b8c48e5.jar" />
+    </item>
+    <item
+        jar="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/pre-dexed/release/com.android.support-appcompat-v7-23.1.1_1968c75dc9cb640de2b0d79aca94c9e9989ce505.jar" />
+    </item>
+    <item
+        jar="/Users/jorgesanmartin/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/pre-dexed/release/butterknife-7.0.1_b68e5bdb83a926608a9e7e65da2ad8ba9321d81f.jar" />
+    </item>
+    <item
+        jar="/Users/jorgesanmartin/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/pre-dexed/release/support-annotations-23.1.1_3d7d5a06ba6183fa79f7555496a59e681d196846.jar" />
+    </item>
+    <item
+        jar="/Users/jorgesanmartin/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/1.7.2/112366d8158749e25532ebce162232c6e0fb20a5/gson-1.7.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="112366d8158749e25532ebce162232c6e0fb20a5">
+        <dex dex="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/pre-dexed/release/gson-1.7.2_f4f0f87097f882d0a4e055a635682ddc636d286d.jar" />
+    </item>
+    <item
+        jar="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/pre-dexed/release/com.android.support-design-23.1.0_685efb85091c42e8dbf749183dfa3dd325f2c87b.jar" />
+    </item>
+    <item
+        jar="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/pre-dexed/release/com.android.support-recyclerview-v7-23.1.0_965e360a08232943c1d696393c5194a4879be873.jar" />
+    </item>
+    <item
+        jar="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/jorgesanmartin/Desktop/STTApp/app/build/intermediates/pre-dexed/release/com.android.support-support-v4-23.1.1_adec70f11b568735ff6be8e98f03260d23b6bd28.jar" />
+    </item>
+
+</items>
