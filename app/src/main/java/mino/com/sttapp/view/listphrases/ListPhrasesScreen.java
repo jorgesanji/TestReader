@@ -12,7 +12,6 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import mino.com.sttapp.R;
 import mino.com.sttapp.core.view.recyclerview.BaseAdapter;
 import mino.com.sttapp.model.assets.Phrase;
@@ -115,6 +114,7 @@ public class ListPhrasesScreen extends RelativeLayout {
     }
 
     public void setItems(List<Phrase> phrases) {
+        mAdapter.clearData();
         mAdapter.addItems(phrases);
     }
 }

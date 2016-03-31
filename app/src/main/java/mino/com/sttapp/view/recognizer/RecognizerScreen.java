@@ -12,14 +12,16 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import mino.com.sttapp.Commons.Common;
 import mino.com.sttapp.R;
+import mino.com.sttapp.utils.DurationUtils;
 
 /**
  * Created by jorgesanmartin on 2/25/16.
  */
 public class RecognizerScreen extends RelativeLayout {
 
-    private static final int TOTAL_TIME_COUNT_IN_MILLISECONDS = (60 * 1000) * 1;
+    private static final int TOTAL_TIME_COUNT_IN_MILLISECONDS = (60 * Common.MILLIS_SECONDS) * 1;
 
     public interface Listener {
         void stopRecognizer();
@@ -84,7 +86,8 @@ public class RecognizerScreen extends RelativeLayout {
     }
 
     private void initCountDown() {
-        mCountDownTimer = new CountDownTimer(TOTAL_TIME_COUNT_IN_MILLISECONDS, 1000) {
+
+        mCountDownTimer = new CountDownTimer(DurationUtils.getCurrentDuration(getContext()), Common.MILLIS_SECONDS) {
 
             @Override
             public void onTick(long leftTimeInMilliseconds) {

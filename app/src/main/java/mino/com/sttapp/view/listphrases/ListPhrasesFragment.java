@@ -1,9 +1,14 @@
 package mino.com.sttapp.view.listphrases;
 
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.util.List;
 
+import mino.com.sttapp.R;
 import mino.com.sttapp.ScreenNavigationHandler;
 import mino.com.sttapp.core.view.MVPFragment;
 import mino.com.sttapp.model.assets.Phrase;
@@ -17,11 +22,35 @@ public class ListPhrasesFragment extends MVPFragment<ListPhrasesPresenter, ListP
     private ListPhrasesScreen listPhrasesScreen;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.list_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_add) {
+            getPresenter().onAddPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
     protected View getRootView() {
         listPhrasesScreen = new ListPhrasesScreen(getActivity());
         listPhrasesScreen.setListener(this);
         return listPhrasesScreen;
     }
+
 
     @Override
     protected ListPhrasesPresenter createPresenter() {

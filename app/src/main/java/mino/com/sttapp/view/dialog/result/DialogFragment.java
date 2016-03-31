@@ -1,4 +1,4 @@
-package mino.com.sttapp.view.dialog;
+package mino.com.sttapp.view.dialog.result;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -29,7 +29,6 @@ public class DialogFragment extends AppCompatDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         dialogScreen = new DialogScreen(getActivity());
         return dialogScreen;
     }

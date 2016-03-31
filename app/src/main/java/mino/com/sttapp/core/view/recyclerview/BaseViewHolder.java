@@ -67,4 +67,8 @@ public abstract class BaseViewHolder<I> extends RecyclerView.ViewHolder implemen
         return false;
     }
 
+    public Context getContext() {
+        return itemView.getContext();
+    }
+
 }

@@ -49,7 +49,7 @@ public class RecognizerActivity extends BaseActivity {
 
     @Override
     public int getStatusColor() {
-        return R.color.colorPrimary;
+        return R.color.colorAccent;
     }
 
     @Override

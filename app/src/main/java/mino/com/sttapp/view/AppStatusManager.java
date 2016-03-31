@@ -11,12 +11,12 @@ public class AppStatusManager extends StatusMessageManager {
 
     @Override
     public int getErrorColor() {
-        return R.color.colorAccent;
+        return android.R.color.holo_red_dark;
     }
 
     @Override
     public int getSucessColor() {
-        return R.color.colorPrimary;
+        return android.R.color.holo_green_light;
     }
 
     @Override
@@ -33,4 +33,11 @@ public class AppStatusManager extends StatusMessageManager {
     }
 
 
+    public void showErrorPhrase() {
+        showError(R.string.add_phrase_error_message);
+    }
+
+    public void showSuccesPhrase() {
+        showSuccess(R.string.add_phrase_success_message);
+    }
 }

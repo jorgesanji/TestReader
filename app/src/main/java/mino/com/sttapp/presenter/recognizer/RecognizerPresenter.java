@@ -1,8 +1,6 @@
 package mino.com.sttapp.presenter.recognizer;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 
 import mino.com.sttapp.core.presenter.BasePresenter;
 import mino.com.sttapp.core.presenter.Presenter;
@@ -10,7 +8,7 @@ import mino.com.sttapp.model.RecognitionResult;
 import mino.com.sttapp.model.assets.Phrase;
 import mino.com.sttapp.recognizerengine.RecognizerEngine;
 import mino.com.sttapp.utils.AsyncLoader;
-import mino.com.sttapp.view.dialog.DialogFragment;
+import mino.com.sttapp.view.dialog.result.DialogFragment;
 
 /**
  * Created by jorgesanmartin on 2/25/16.
@@ -40,6 +38,7 @@ public class RecognizerPresenter extends BasePresenter<RecognizerPresenter.View>
         super.attachView(view);
         engine = new RecognizerEngine(getView().getActivity());
     }
+
 
     //Public methods
 

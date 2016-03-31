@@ -3,19 +3,16 @@
     package="mino.com.sttapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- VIBRATION -->
     <uses-permission android:name="android.permission.VIBRATE" />
-
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <!--<application-->
-        <!--android:name="mino.com.sttapp.application.SttApplication"-->
-        <!--android:allowBackup="true"-->
-        <!--android:debuggable="true"-->
-        <!--android:icon="@mipmap/ic_launcher"-->
-        <!--android:label="@string/app_name"-->
-        <!--android:theme="@style/AppTheme">-->
+    <!--android:name="mino.com.sttapp.application.SttApplication"-->
+    <!--android:allowBackup="true"-->
+    <!--android:debuggable="true"-->
+    <!--android:icon="@mipmap/ic_launcher"-->
+    <!--android:label="@string/app_name"-->
+    <!--android:theme="@style/AppTheme">-->
 
     <application
         android:name="mino.com.sttapp.application.SttApplication"
@@ -25,7 +22,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".view.listphrases.ListPhrasesActivity"
+            android:name=".view.home.HomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,8 +32,17 @@
         </activity>
 
         <activity
+            android:name=".view.listphrases.ListPhrasesActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".view.recognizer.RecognizerActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".view.settings.SettingsActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

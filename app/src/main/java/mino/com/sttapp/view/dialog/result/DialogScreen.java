@@ -1,4 +1,4 @@
-package mino.com.sttapp.view.dialog;
+package mino.com.sttapp.view.dialog.result;
 
 import android.annotation.TargetApi;
 import android.content.Context;

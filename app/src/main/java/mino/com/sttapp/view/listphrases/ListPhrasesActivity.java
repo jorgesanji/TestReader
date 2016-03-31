@@ -13,6 +13,7 @@ import mino.com.sttapp.core.view.BaseActivity;
 
 public class ListPhrasesActivity extends BaseActivity {
 
+
     View rootView;
 
     @Override
@@ -43,7 +44,7 @@ public class ListPhrasesActivity extends BaseActivity {
 
     @Override
     public int getStatusColor() {
-        return R.color.colorPrimary;
+        return R.color.colorAccent;
     }
 
     @Override
