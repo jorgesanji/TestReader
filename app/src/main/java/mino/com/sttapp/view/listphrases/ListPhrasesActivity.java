@@ -13,7 +13,6 @@ import mino.com.sttapp.core.view.BaseActivity;
 
 public class ListPhrasesActivity extends BaseActivity {
 
-
     View rootView;
 
     @Override
@@ -32,6 +31,7 @@ public class ListPhrasesActivity extends BaseActivity {
     @Override
     public void postAddView() {
         Fragment fragment = Fragment.instantiate(this, ListPhrasesFragment.class.getName());
+        fragment.setArguments(getIntent().getExtras());
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.contentFrame, fragment);
         transaction.commit();

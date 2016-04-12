@@ -5,8 +5,10 @@ import android.os.Bundle;
 import mino.com.sttapp.core.presenter.BasePresenter;
 import mino.com.sttapp.core.presenter.Presenter;
 import mino.com.sttapp.model.RecognitionResult;
+import mino.com.sttapp.model.Result;
 import mino.com.sttapp.model.assets.Phrase;
 import mino.com.sttapp.recognizerengine.RecognizerEngine;
+import mino.com.sttapp.result.ResultEngine;
 import mino.com.sttapp.utils.AsyncLoader;
 import mino.com.sttapp.view.dialog.result.DialogFragment;
 
@@ -19,14 +21,19 @@ public class RecognizerPresenter extends BasePresenter<RecognizerPresenter.View>
 
     private Actions listener;
     private RecognizerEngine engine;
+    private ResultEngine mResultEngine;
 
     public RecognizerPresenter(Actions actions) {
         this.listener = actions;
+        this.mResultEngine = new ResultEngine();
     }
 
     public interface View extends Presenter.View {
         Phrase getPhrase();
+
         void initCount();
+
+        String getUserAge();
     }
 
     public interface Actions {
@@ -56,7 +63,7 @@ public class RecognizerPresenter extends BasePresenter<RecognizerPresenter.View>
     }
 
     public void showResults(final String result) {
-        final String phrase = getView().getPhrase().getText();
+        final String phrase = getView().getPhrase().getText().replaceAll("([a-z]+)[?:!.,;]*", "$1");
         AsyncLoader<RecognitionResult> asyncLoader = new AsyncLoader<RecognitionResult>() {
             @Override
             public RecognitionResult doInBackground() {
@@ -78,14 +85,15 @@ public class RecognizerPresenter extends BasePresenter<RecognizerPresenter.View>
                     }
                 }
 
-                return new RecognitionResult(result,numberwords, correctWords, incorrectWords);
+                Result optimResult = mResultEngine.getResultByAgeAndCorrectWords(getView().getUserAge(), correctWords);
+                return new RecognitionResult(result, getView().getFragment().getString(optimResult.getTextResult()), numberwords, correctWords, incorrectWords);
             }
 
             @Override
             public void postProcess(RecognitionResult result) {
                 Bundle args = new Bundle();
                 args.putSerializable(DialogFragment.ITEM_RESULT, result);
-                addDialogFragment(DialogFragment.class, 0, args);
+                getView().getFragment().addDialogFragment(DialogFragment.class, 0, args);
             }
         };
 

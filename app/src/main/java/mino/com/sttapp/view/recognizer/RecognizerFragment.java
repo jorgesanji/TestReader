@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import de.greenrobot.event.EventBus;
+import mino.com.sttapp.Commons.Common;
 import mino.com.sttapp.R;
 import mino.com.sttapp.ScreenNavigationHandler;
 import mino.com.sttapp.core.view.MVPFragment;
@@ -20,7 +21,8 @@ import mino.com.sttapp.presenter.recognizer.RecognizerPresenter;
 public class RecognizerFragment extends MVPFragment<RecognizerPresenter, RecognizerPresenter.View> implements RecognizerPresenter.View, RecognizerScreen.Listener {
 
     private RecognizerScreen recognizerScreen;
-    private Phrase phrase;
+    private Phrase mPhrase;
+    private String mUserAge;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,11 +43,10 @@ public class RecognizerFragment extends MVPFragment<RecognizerPresenter, Recogni
             recognizerScreen.startCountDown();
             getPresenter().startRecognizer();
             return true;
-        }else if (id == R.id.action_stop) {
+        } else if (id == R.id.action_stop) {
             recognizerScreen.stopCountDown();
             getPresenter().destroyRecognizer();
             return true;
-
         }
 
         return super.onOptionsItemSelected(item);
@@ -95,22 +96,26 @@ public class RecognizerFragment extends MVPFragment<RecognizerPresenter, Recogni
 
     @Override
     protected void onDidStart() {
-        phrase = (Phrase) getArguments().getSerializable(RecognizerActivity.ITEM_SELECTED);
-        recognizerScreen.setDescription(phrase.getInstructions());
-        recognizerScreen.setText(phrase.getText());
+        mPhrase = (Phrase) getArguments().getSerializable(Common.ITEM_SELECTED);
+        mUserAge = String.valueOf(getArguments().getInt(Common.KEY_AGE));
+        recognizerScreen.setDescription(mPhrase.getInstructions());
+        recognizerScreen.setText(mPhrase.getText());
     }
-
 
     // RecognizerPresenter.View
 
-    @Override
     public Phrase getPhrase() {
-        return phrase;
+        return mPhrase;
     }
 
     @Override
     public void initCount() {
         recognizerScreen.startCountDown();
+    }
+
+    @Override
+    public String getUserAge() {
+        return mUserAge;
     }
 
     // RecognizerScreen.Listener

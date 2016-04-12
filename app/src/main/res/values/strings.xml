@@ -18,4 +18,12 @@
     <string name="add_phrase_success_message">Frase añadida</string>
     <string name="add_phrase_error_message">Frase no permitida</string>
 
+    <string name="reading_very_top_level">Muy rapida</string>
+    <string name="reading_top_level">Rapida</string>
+    <string name="reading_medium_level">Rapida mediana</string>
+    <string name="reading_very_medium_level">Lenta mediana</string>
+    <string name="reading_low_level">Lenta</string>
+    <string name="reading_very_low_level">Lenta</string>
+
+
 </resources>

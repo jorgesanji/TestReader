@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,7 +96,7 @@ public abstract class MVPFragment<P extends Presenter<V>, V extends Presenter.Vi
     }
 
     @Override
-    public Fragment getFragment() {
+    public MVPFragment getFragment() {
         return this;
     }
 
@@ -157,6 +159,20 @@ public abstract class MVPFragment<P extends Presenter<V>, V extends Presenter.Vi
         ViewGroup group = (ViewGroup) snackbar.getView();
         group.setBackgroundColor(getResources().getColor(color));
         snackbar.show();
+    }
+
+    public AppCompatDialogFragment addDialogFragment(Class clazz, int code) {
+        return addDialogFragment(clazz, code, null);
+    }
+
+    public AppCompatDialogFragment addDialogFragment(Class clazz, int code, Bundle bundle) {
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        AppCompatDialogFragment fragment = (AppCompatDialogFragment) AppCompatDialogFragment.instantiate(getView().getContext(), clazz.getName());
+        fragment.setTargetFragment(this, code);
+        fragment.setArguments(bundle);
+        fragment.show(fragmentTransaction, clazz.toString());
+
+        return fragment;
     }
 
     @Override

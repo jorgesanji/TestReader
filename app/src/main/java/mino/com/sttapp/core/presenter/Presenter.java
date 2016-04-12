@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+
+import mino.com.sttapp.core.view.MVPFragment;
 
 /**
  * Represents a Presenter in a model view presenter (MVP) pattern.
@@ -55,7 +56,7 @@ public interface Presenter<V extends Presenter.View> {
         /**
          * @return The fragment, if any.
          */
-        Fragment getFragment();
+        MVPFragment getFragment();
         /**
          * Add here your calls to your widget/library to show user info messages.
          * @param message Message box text.

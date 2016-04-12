@@ -1,6 +1,5 @@
 package mino.com.sttapp.view.recognizer;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -13,8 +12,6 @@ import mino.com.sttapp.core.utils.PermissionsManager;
 import mino.com.sttapp.core.view.BaseActivity;
 
 public class RecognizerActivity extends BaseActivity {
-
-    public static final String ITEM_SELECTED = "item_selected";
 
     View rootView;
 
@@ -33,10 +30,8 @@ public class RecognizerActivity extends BaseActivity {
 
     @Override
     public void postAddView() {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(ITEM_SELECTED, getIntent().getExtras().getSerializable(ITEM_SELECTED));
         Fragment fragment = Fragment.instantiate(this, RecognizerFragment.class.getName());
-        fragment.setArguments(bundle);
+        fragment.setArguments(getIntent().getExtras());
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.contentFrame, fragment);
         transaction.commit();

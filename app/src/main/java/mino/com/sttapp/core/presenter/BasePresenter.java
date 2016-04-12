@@ -1,9 +1,6 @@
 package mino.com.sttapp.core.presenter;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatDialogFragment;
 
 import mino.com.sttapp.view.AppStatusManager;
 
@@ -47,19 +44,5 @@ public abstract class BasePresenter<V extends Presenter.View> implements Present
 
     public AppStatusManager statusView() {
         return mStatusManager;
-    }
-
-    protected AppCompatDialogFragment addDialogFragment(Class clazz, int code) {
-        return addDialogFragment(clazz, code, null);
-    }
-
-    protected AppCompatDialogFragment addDialogFragment(Class clazz, int code, Bundle bundle) {
-        FragmentTransaction fragmentTransaction = getView().getFragment().getFragmentManager().beginTransaction();
-        AppCompatDialogFragment fragment = (AppCompatDialogFragment) AppCompatDialogFragment.instantiate(getView().getContext(), clazz.getName());
-        fragment.setTargetFragment(getView().getFragment(), code);
-        fragment.setArguments(bundle);
-        fragment.show(fragmentTransaction, clazz.toString());
-
-        return fragment;
     }
 }

@@ -12,7 +12,6 @@ import mino.com.sttapp.core.presenter.BasePresenter;
 import mino.com.sttapp.core.presenter.Presenter;
 import mino.com.sttapp.model.assets.Phrase;
 import mino.com.sttapp.view.dialog.addphrase.AddPhraseDialogFragment;
-import mino.com.sttapp.view.recognizer.RecognizerActivity;
 
 /**
  * Created by jorgesanmartin on 2/25/16.
@@ -64,8 +63,8 @@ public class ListPhrasesPresenter extends BasePresenter<ListPhrasesPresenter.Vie
 
     public void onSelectedPhrase(Phrase phrase) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(RecognizerActivity.ITEM_SELECTED, phrase);
-
+        bundle.putSerializable(Common.ITEM_SELECTED, phrase);
+        bundle.putInt(Common.KEY_AGE, getView().getFragment().getArguments().getInt(Common.KEY_AGE));
         listener.onSelectedPhrase(getView().getActivity(), bundle);
     }
 }
