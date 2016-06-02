@@ -12,13 +12,15 @@ public class RecognitionResult implements Serializable {
     private final int numberWords;
     private final int correctWords;
     private final int incorrectWords;
+    private final int totalWords;
 
-    public RecognitionResult(String result, String messageResult, int numberWords, int correctWords, int incorrectWords) {
+    public RecognitionResult(String result, String messageResult, int numberWords, int correctWords, int incorrectWords, int totalWords) {
         this.result = result;
         this.messageResult = messageResult;
         this.numberWords = numberWords;
         this.correctWords = correctWords;
         this.incorrectWords = incorrectWords;
+        this.totalWords = totalWords;
     }
 
     public int getNumberWords() {
@@ -39,5 +41,9 @@ public class RecognitionResult implements Serializable {
 
     public String getMessageResult() {
         return messageResult;
+    }
+
+    public int getTotalWords() {
+        return totalWords;
     }
 }

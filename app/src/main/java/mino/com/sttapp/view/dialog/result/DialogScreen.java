@@ -3,11 +3,8 @@ package mino.com.sttapp.view.dialog.result;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import butterknife.Bind;
@@ -21,8 +18,6 @@ public class DialogScreen extends LinearLayout {
 
 
     // Variables
-
-    private RecyclerView.LayoutManager mLayoutManager;
 
     // Views
     @Bind(R.id.result)

@@ -38,7 +38,7 @@ public class DialogFragment extends AppCompatDialogFragment {
         super.onStart();
         recognitionResult = (RecognitionResult) getArguments().getSerializable(ITEM_RESULT);
         dialogScreen.setText(recognitionResult.getResult());
-        dialogScreen.setResult("Numero de palabras leídas :" + recognitionResult.getNumberWords() + "\n" + "Número de palarbras incorrectos :" + recognitionResult.getIncorrectWords() + "\n" + "Número de palarbras correctos :" + recognitionResult.getCorrectWords());
+        dialogScreen.setResult(recognitionResult.getMessageResult() + "\n" + "Numero total de palabras :" + recognitionResult.getTotalWords() + "\n" + "Numero de palabras leídas :" + recognitionResult.getNumberWords() + "\n" + "Número de palarbras correctas :" + recognitionResult.getCorrectWords() + "\n" + "Número de palarbras incorrectas :" + recognitionResult.getIncorrectWords());
         Dialog dialog = getDialog();
         if (dialog != null) {
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

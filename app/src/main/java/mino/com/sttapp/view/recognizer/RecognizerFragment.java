@@ -14,6 +14,7 @@ import mino.com.sttapp.core.view.MVPFragment;
 import mino.com.sttapp.events.RecognizerEvent;
 import mino.com.sttapp.model.assets.Phrase;
 import mino.com.sttapp.presenter.recognizer.RecognizerPresenter;
+import mino.com.sttapp.utils.AppAlertBuilder;
 
 /**
  * Created by jorgesanmartin on 2/25/16.
@@ -71,9 +72,9 @@ public class RecognizerFragment extends MVPFragment<RecognizerPresenter, Recogni
 
     @Override
     public void onPause() {
-        super.onPause();
         getPresenter().destroyRecognizer();
         recognizerScreen.stopCountDown();
+        super.onPause();
     }
 
     @Override
@@ -121,18 +122,22 @@ public class RecognizerFragment extends MVPFragment<RecognizerPresenter, Recogni
     // RecognizerScreen.Listener
 
     @Override
-    public void stopRecognizer() {
-        getPresenter().stopRecognizer();
+    public void destroyRecognizer() {
+        getPresenter().destroyRecognizer();
     }
 
     //region **************  EventBus **************
 
     public void onEventMainThread(RecognizerEvent event) {
         recognizerScreen.stopCountDown();
-        if (!event.hasError()) {
-            getPresenter().showResults(event.getResult().get(0));
+        if (event.isRecognizerActivated()) {
+            if (!event.hasError()) {
+                getPresenter().showResults(event.getResult().get(0));
+            } else {
+                getPresenter().statusView().showRecognitionError();
+            }
         } else {
-            getPresenter().statusView().showRecognitionError();
+            AppAlertBuilder.showAlertWithMessage(getContext(), R.string.recognizer_disabled, android.R.string.ok, null);
         }
     }
 

@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import java.util.List;
-
 import mino.com.sttapp.Commons.Common;
 import mino.com.sttapp.application.SttApplication;
 import mino.com.sttapp.core.presenter.BasePresenter;
@@ -25,7 +23,7 @@ public class ListPhrasesPresenter extends BasePresenter<ListPhrasesPresenter.Vie
     }
 
     public interface View extends Presenter.View {
-        void setPhrases(List<Phrase> list);
+        void addPhrase(Phrase phrase);
     }
 
     public interface Actions {
@@ -42,9 +40,11 @@ public class ListPhrasesPresenter extends BasePresenter<ListPhrasesPresenter.Vie
                 statusView().showErrorPhrase();
             } else {
                 Phrase phrase = new Phrase("", phraseStr);
+
                 SttApplication.getApp().getPhrases().add(phrase);
+
                 statusView().showSuccesPhrase();
-                getView().setPhrases(SttApplication.getApp().getPhrases());
+                getView().addPhrase(phrase);
             }
         }
     }
@@ -52,13 +52,7 @@ public class ListPhrasesPresenter extends BasePresenter<ListPhrasesPresenter.Vie
     //Public methods
 
     public void onAddPressed() {
-        addDialogFragment(AddPhraseDialogFragment.class, Common.ADD_PHRASE_CODE);
-    }
-
-
-    public void getPhraseList() {
-        List<Phrase> list = SttApplication.getApp().getPhrases();
-        getView().setPhrases(list);
+        getView().getFragment().addDialogFragment(AddPhraseDialogFragment.class, Common.ADD_PHRASE_CODE);
     }
 
     public void onSelectedPhrase(Phrase phrase) {

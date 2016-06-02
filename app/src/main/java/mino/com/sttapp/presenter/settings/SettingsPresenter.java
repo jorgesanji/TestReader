@@ -47,7 +47,7 @@ public class SettingsPresenter extends BasePresenter<SettingsPresenter.View> {
     //Public methods
 
     public void onAddPressed() {
-        addDialogFragment(AddPhraseDialogFragment.class, Common.ADD_PHRASE_CODE);
+        getView().getFragment().addDialogFragment(AddPhraseDialogFragment.class, Common.ADD_PHRASE_CODE);
     }
 
 }

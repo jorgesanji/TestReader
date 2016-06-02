@@ -9,6 +9,8 @@ import mino.com.sttapp.presenter.home.HomePresenter;
 import mino.com.sttapp.presenter.listphrases.ListPhrasesPresenter;
 import mino.com.sttapp.presenter.recognizer.RecognizerPresenter;
 import mino.com.sttapp.presenter.settings.SettingsPresenter;
+import mino.com.sttapp.presenter.splash.SplashPresenter;
+import mino.com.sttapp.view.home.HomeActivity;
 import mino.com.sttapp.view.listphrases.ListPhrasesActivity;
 import mino.com.sttapp.view.recognizer.RecognizerActivity;
 import mino.com.sttapp.view.settings.SettingsActivity;
@@ -16,7 +18,7 @@ import mino.com.sttapp.view.settings.SettingsActivity;
 /**
  * Created by jorgesanmartin on 2/26/16.
  */
-public final class ScreenNavigationHandler implements ListPhrasesPresenter.Actions, RecognizerPresenter.Actions, HomePresenter.Actions, SettingsPresenter.Actions {
+public final class ScreenNavigationHandler implements ListPhrasesPresenter.Actions, RecognizerPresenter.Actions, HomePresenter.Actions, SettingsPresenter.Actions, SplashPresenter.Actions {
 
     //Instance
     private static ScreenNavigationHandler instance = null;
@@ -76,7 +78,17 @@ public final class ScreenNavigationHandler implements ListPhrasesPresenter.Actio
         return newTask(context, SettingsActivity.class, bundle);
     }
 
+    private static Intent home(@NonNull Activity context, Bundle bundle) {
+        return newTask(context, HomeActivity.class, bundle);
+    }
+
     // ------------------------ ACTIONS DEFINITION -----------------------------------
+
+    @Override
+    public void onLaunchHome(Activity activity, Bundle bundle) {
+        Intent intent = home(activity, bundle);
+        startActivity(activity, intent);
+    }
 
     //---HOME ACTIVITY--
 

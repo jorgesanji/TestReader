@@ -24,7 +24,7 @@ public class RecognizerScreen extends RelativeLayout {
     private static final int TOTAL_TIME_COUNT_IN_MILLISECONDS = (60 * Common.MILLIS_SECONDS) * 1;
 
     public interface Listener {
-        void stopRecognizer();
+        void destroyRecognizer();
     }
 
     // Vars
@@ -87,7 +87,7 @@ public class RecognizerScreen extends RelativeLayout {
 
     private void initCountDown() {
 
-        mCountDownTimer = new CountDownTimer(DurationUtils.getCurrentDuration(getContext()), Common.MILLIS_SECONDS) {
+        mCountDownTimer = new CountDownTimer(DurationUtils.getCurrentDuration(getContext()) * 60, Common.MILLIS_SECONDS) {
 
             @Override
             public void onTick(long leftTimeInMilliseconds) {
@@ -99,7 +99,7 @@ public class RecognizerScreen extends RelativeLayout {
 
             @Override
             public void onFinish() {
-                listener.stopRecognizer();
+                listener.destroyRecognizer();
                 mCounter.setText(getContext().getString(R.string.initial_time));
             }
 

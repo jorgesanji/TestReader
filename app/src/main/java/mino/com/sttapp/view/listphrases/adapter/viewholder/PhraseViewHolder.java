@@ -13,6 +13,10 @@ import mino.com.sttapp.model.assets.Phrase;
  */
 public class PhraseViewHolder extends BaseViewHolder<Phrase> {
 
+    // Vars
+    private Phrase phrase;
+
+    // Views
     @Bind(R.id.title)
     TextView mTitle;
 
@@ -20,13 +24,33 @@ public class PhraseViewHolder extends BaseViewHolder<Phrase> {
     TextView mSubtitle;
 
     public PhraseViewHolder(View itemView) {
-        super(itemView);
+        super(itemView, true, true);
+//        itemView.setOnCreateContextMenuListener(mOnCreateContextMenuListener);
     }
 
     @Override
     public void configureItem(Phrase item) {
+        this.phrase = item;
         mSubtitle.setText(String.format(getContext().getString(R.string.list_text), getAdapterPosition()));
 //        mTitle.setText(item.getInstructions());
 //        mSubtitle.setText(item.getText());
     }
+
+//    private final View.OnCreateContextMenuListener mOnCreateContextMenuListener = new View.OnCreateContextMenuListener() {
+//        @Override
+//        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+//            if (phrase != null) {
+//                MenuItem myActionItem = menu.add("My Context Action");
+//                myActionItem.setOnMenuItemClickListener(mOnMyActionClickListener);
+//            }
+//        }
+//    };
+//
+//    private final MenuItem.OnMenuItemClickListener mOnMyActionClickListener = new MenuItem.OnMenuItemClickListener() {
+//        @Override
+//        public boolean onMenuItemClick(MenuItem item) {
+//
+//            return true;
+//        }
+//    };
 }

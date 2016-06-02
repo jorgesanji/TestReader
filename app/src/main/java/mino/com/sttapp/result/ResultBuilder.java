@@ -10,10 +10,10 @@ import mino.com.sttapp.model.Result;
 /**
  * Created by jorgesanmartin on 4/12/16.
  */
-public class ResultEngine {
+public class ResultBuilder {
     private final HashMap<String, List<Result>> results;
 
-    public ResultEngine() {
+    public ResultBuilder() {
         this.results = buildResults();
     }
 
@@ -37,36 +37,36 @@ public class ResultEngine {
         eightAgeResults.add(new Result.ResultBuilder(84, 84, very_low_level).build());
 
         List<Result> nineAgeResults = new ArrayList<>();
-        eightAgeResults.add(new Result.ResultBuilder(168, 168, reading_very_top_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(150, 167, reading_top_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(136, 149, reading_medium_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(120, 135, reading_very_medium_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(104, 119, reading_low_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(103, 103, very_low_level).build());
+        nineAgeResults.add(new Result.ResultBuilder(168, 168, reading_very_top_level).build());
+        nineAgeResults.add(new Result.ResultBuilder(150, 167, reading_top_level).build());
+        nineAgeResults.add(new Result.ResultBuilder(136, 149, reading_medium_level).build());
+        nineAgeResults.add(new Result.ResultBuilder(120, 135, reading_very_medium_level).build());
+        nineAgeResults.add(new Result.ResultBuilder(104, 119, reading_low_level).build());
+        nineAgeResults.add(new Result.ResultBuilder(103, 103, very_low_level).build());
 
         List<Result> tenAgeResults = new ArrayList<>();
-        eightAgeResults.add(new Result.ResultBuilder(196, 196, reading_very_top_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(178, 195, reading_top_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(161, 177, reading_medium_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(143, 160, reading_very_medium_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(125, 142, reading_low_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(124, 124, very_low_level).build());
+        tenAgeResults.add(new Result.ResultBuilder(196, 196, reading_very_top_level).build());
+        tenAgeResults.add(new Result.ResultBuilder(178, 195, reading_top_level).build());
+        tenAgeResults.add(new Result.ResultBuilder(161, 177, reading_medium_level).build());
+        tenAgeResults.add(new Result.ResultBuilder(143, 160, reading_very_medium_level).build());
+        tenAgeResults.add(new Result.ResultBuilder(125, 142, reading_low_level).build());
+        tenAgeResults.add(new Result.ResultBuilder(124, 124, very_low_level).build());
 
         List<Result> eleveAgeResults = new ArrayList<>();
-        eightAgeResults.add(new Result.ResultBuilder(214, 214, reading_very_top_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(194, 213, reading_top_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(174, 193, reading_medium_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(154, 173, reading_very_medium_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(135, 153, reading_low_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(134, 134, very_low_level).build());
+        eleveAgeResults.add(new Result.ResultBuilder(214, 214, reading_very_top_level).build());
+        eleveAgeResults.add(new Result.ResultBuilder(194, 213, reading_top_level).build());
+        eleveAgeResults.add(new Result.ResultBuilder(174, 193, reading_medium_level).build());
+        eleveAgeResults.add(new Result.ResultBuilder(154, 173, reading_very_medium_level).build());
+        eleveAgeResults.add(new Result.ResultBuilder(135, 153, reading_low_level).build());
+        eleveAgeResults.add(new Result.ResultBuilder(134, 134, very_low_level).build());
 
         List<Result> twelveAgeResults = new ArrayList<>();
-        eightAgeResults.add(new Result.ResultBuilder(214, 214, reading_very_top_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(194, 213, reading_top_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(174, 193, reading_medium_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(154, 173, reading_very_medium_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(135, 153, reading_low_level).build());
-        eightAgeResults.add(new Result.ResultBuilder(134, 134, very_low_level).build());
+        twelveAgeResults.add(new Result.ResultBuilder(214, 214, reading_very_top_level).build());
+        twelveAgeResults.add(new Result.ResultBuilder(194, 213, reading_top_level).build());
+        twelveAgeResults.add(new Result.ResultBuilder(174, 193, reading_medium_level).build());
+        twelveAgeResults.add(new Result.ResultBuilder(154, 173, reading_very_medium_level).build());
+        twelveAgeResults.add(new Result.ResultBuilder(135, 153, reading_low_level).build());
+        twelveAgeResults.add(new Result.ResultBuilder(134, 134, very_low_level).build());
 
         results.put("8", eightAgeResults);
         results.put("9", nineAgeResults);
@@ -86,7 +86,7 @@ public class ResultEngine {
                 }
             }
         }
-        return null;
+        return resultByAge.get(resultByAge.size() - 1);
     }
 
     public HashMap<String, List<Result>> getResults() {

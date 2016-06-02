@@ -21,7 +21,7 @@ public class PhrasesAdapter extends BaseAdapter<PhraseViewHolder, Phrase> {
     public RecyclerView.ViewHolder getHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.lay_row_phrase, parent, false);
-        return new PhraseViewHolder(view).setClickListener(getClickListener());
+        return new PhraseViewHolder(view).setClickListener(getClickListener()).setLongPressListener(getLongPresslistener());
     }
 
     @Override

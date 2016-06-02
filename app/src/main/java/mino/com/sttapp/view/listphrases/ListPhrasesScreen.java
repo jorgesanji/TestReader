@@ -13,8 +13,10 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import mino.com.sttapp.R;
+import mino.com.sttapp.application.SttApplication;
 import mino.com.sttapp.core.view.recyclerview.BaseAdapter;
 import mino.com.sttapp.model.assets.Phrase;
+import mino.com.sttapp.utils.AppAlertBuilder;
 import mino.com.sttapp.utils.TLDividerItemDecoration;
 import mino.com.sttapp.view.listphrases.adapter.PhrasesAdapter;
 
@@ -86,7 +88,6 @@ public class ListPhrasesScreen extends RelativeLayout {
         mLayoutManager = new LinearLayoutManager(getContext());
         mList.setLayoutManager(mLayoutManager);
         mList.addItemDecoration(new TLDividerItemDecoration(getContext(), R.drawable.line_divider_contacts));
-
     }
 
     private void initAdapter() {
@@ -99,6 +100,32 @@ public class ListPhrasesScreen extends RelativeLayout {
             @Override
             public void onItemSelected(int position) {
                 listener.onSelectedPhrase(mAdapter.getItem(position));
+            }
+        });
+
+        mAdapter.setLongPresslistener(new BaseAdapter.LongPressListener() {
+            @Override
+            public void onItemSelected(final int position) {
+                AppAlertBuilder.showAlertWithMessage(getContext(), -1, android.R.string.cancel, R.array.array_options, new AppAlertBuilder.IOItemSelected() {
+                    @Override
+                    public void onItemSelected(int index, String title) {
+                        if (index == 0) {
+                            Phrase phrase = mAdapter.getItem(position);
+
+                            SttApplication.getApp().getPhrases().remove(phrase);
+
+                            mAdapter.removeAndUpdateView(index);
+                        }
+                    }
+
+                    @Override
+                    public void onCancel(int index) {
+                    }
+
+                    @Override
+                    public void onAccept(int index) {
+                    }
+                });
             }
         });
     }
@@ -116,5 +143,10 @@ public class ListPhrasesScreen extends RelativeLayout {
     public void setItems(List<Phrase> phrases) {
         mAdapter.clearData();
         mAdapter.addItems(phrases);
+    }
+
+    public void addItem(Phrase phrase) {
+        mAdapter.addItem(phrase);
+        mAdapter.notifyDataSetChanged();
     }
 }

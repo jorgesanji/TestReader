@@ -26,6 +26,7 @@ public class PermissionsManager {
     public static final int CODE_REQUEST_READ_CONTACTS = 200;
     public static final int CODE_REQUEST_AUDIO = 150;
     public static final int CODE_REQUEST_ALL = 100;
+    public static final int CODE_REQUEST_INTERNET = 50;
 
     public static final String[] CONTACTOS_PERMISSIONS = new String[]{Manifest.permission.READ_CONTACTS};
     public static final String[] CAMERA_PERMISSIONS = new String[]{Manifest.permission.CAMERA};
@@ -33,8 +34,10 @@ public class PermissionsManager {
     public static final String[] LOCATION_PERMISSIONS = new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
     public static final String[] SMS_PERMISSIONS = new String[]{Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS};
     public static final String[] AUDIO_PERMISIONS = new String[]{Manifest.permission.RECORD_AUDIO};
+    public static final String[] INTERNET_PERMISSION = new String[]{Manifest.permission.INTERNET};
 
-    public static final String[] ALL_PERMISSIONS = {Manifest.permission.READ_CONTACTS, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS};
+    public static final String[] ALL_PERMISSIONS = {Manifest.permission.INTERNET, Manifest.permission.READ_CONTACTS, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS};
+
 
     public enum Permission {
 
@@ -45,6 +48,8 @@ public class PermissionsManager {
         SMS(SMS_PERMISSIONS, CODE_REQUEST_SMS),
         ALL(ALL_PERMISSIONS, CODE_REQUEST_ALL),
         AUDIO(AUDIO_PERMISIONS, CODE_REQUEST_AUDIO),
+        INTERNET(INTERNET_PERMISSION, CODE_REQUEST_INTERNET),
+
         UNKNOW(new String[]{}, -1);
 
         private final String[] permissions;

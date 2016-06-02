@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.view.ViewGroup;
 
 import mino.com.sttapp.core.presenter.Presenter;
@@ -74,7 +73,7 @@ public abstract class MVPActivity<P extends Presenter<V>, V extends Presenter.Vi
     }
 
     @Override
-    public Fragment getFragment() {
+    public MVPFragment getFragment() {
         return null;
     }
 

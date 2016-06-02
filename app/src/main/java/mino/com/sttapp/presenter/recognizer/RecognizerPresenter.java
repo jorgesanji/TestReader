@@ -8,7 +8,7 @@ import mino.com.sttapp.model.RecognitionResult;
 import mino.com.sttapp.model.Result;
 import mino.com.sttapp.model.assets.Phrase;
 import mino.com.sttapp.recognizerengine.RecognizerEngine;
-import mino.com.sttapp.result.ResultEngine;
+import mino.com.sttapp.result.ResultBuilder;
 import mino.com.sttapp.utils.AsyncLoader;
 import mino.com.sttapp.view.dialog.result.DialogFragment;
 
@@ -17,15 +17,13 @@ import mino.com.sttapp.view.dialog.result.DialogFragment;
  */
 public class RecognizerPresenter extends BasePresenter<RecognizerPresenter.View> {
 
-    private static final int INIT_DELAY = 500;
-
     private Actions listener;
     private RecognizerEngine engine;
-    private ResultEngine mResultEngine;
+    private ResultBuilder mResultEngine;
 
     public RecognizerPresenter(Actions actions) {
         this.listener = actions;
-        this.mResultEngine = new ResultEngine();
+        this.mResultEngine = new ResultBuilder();
     }
 
     public interface View extends Presenter.View {
@@ -63,7 +61,7 @@ public class RecognizerPresenter extends BasePresenter<RecognizerPresenter.View>
     }
 
     public void showResults(final String result) {
-        final String phrase = getView().getPhrase().getText().replaceAll("([a-z]+)[?:!.,;]*", "$1");
+        final String phrase = getView().getPhrase().getText().replaceAll("([a-z]+)[?:!.,;-]*", "$1");
         AsyncLoader<RecognitionResult> asyncLoader = new AsyncLoader<RecognitionResult>() {
             @Override
             public RecognitionResult doInBackground() {
@@ -75,18 +73,22 @@ public class RecognizerPresenter extends BasePresenter<RecognizerPresenter.View>
                 int correctWords = 0;
                 int incorrectWords = 0;
 
-                for (int index = 0; index < resultsArray.length; index++) {
-                    String resultString = resultsArray[index];
+                for (int index = 0; index < phraseArray.length; index++) {
                     String phraseString = phraseArray[index];
-                    if (resultString.equalsIgnoreCase(phraseString)) {
-                        correctWords++;
+                    if (index < resultsArray.length) {
+                        String resultString = resultsArray[index];
+                        if (resultString.equalsIgnoreCase(phraseString)) {
+                            correctWords++;
+                        } else {
+                            incorrectWords++;
+                        }
                     } else {
                         incorrectWords++;
                     }
                 }
 
                 Result optimResult = mResultEngine.getResultByAgeAndCorrectWords(getView().getUserAge(), correctWords);
-                return new RecognitionResult(result, getView().getFragment().getString(optimResult.getTextResult()), numberwords, correctWords, incorrectWords);
+                return new RecognitionResult(result, getView().getFragment().getString(optimResult.getTextResult()), numberwords, correctWords, incorrectWords, phraseArray.length);
             }
 
             @Override

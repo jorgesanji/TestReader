@@ -10,7 +10,7 @@
     <string name="settings_title">Settings</string>
     <string name="settings_add_new_phrase">Añadir nueva frase + </string>
     <string name="settings_add_new_phrase_title">Añadir</string>
-    <string name="settings_add_new_phrase_hint">Escribe una frase</string>
+    <string name="settings_add_new_phrase_hint">Escribe una frase de 20 palabras como minimo </string>
     <string name="list_text">Texto#%d</string>
 
     <!-- ERROR MESSAGES -->
@@ -18,12 +18,16 @@
     <string name="add_phrase_success_message">Frase añadida</string>
     <string name="add_phrase_error_message">Frase no permitida</string>
 
-    <string name="reading_very_top_level">Muy rapida</string>
-    <string name="reading_top_level">Rapida</string>
-    <string name="reading_medium_level">Rapida mediana</string>
-    <string name="reading_very_medium_level">Lenta mediana</string>
-    <string name="reading_low_level">Lenta</string>
-    <string name="reading_very_low_level">Lenta</string>
+    <string name="reading_very_top_level">Lectura muy rapida</string>
+    <string name="reading_top_level">Lectura rapida</string>
+    <string name="reading_medium_level">Lectura rapida mediana</string>
+    <string name="reading_very_medium_level">Lectura lenta mediana</string>
+    <string name="reading_low_level">Lectura lenta</string>
+    <string name="reading_very_low_level">Lectura lenta</string>
+
+    <string name="list_remove">Delete</string>
+
+    <string name="recognizer_disabled">El reconocimiento de voz no esta activo por favor verfique el dispositivo</string>
 
 
 </resources>

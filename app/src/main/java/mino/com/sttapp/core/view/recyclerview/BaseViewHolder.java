@@ -46,8 +46,9 @@ public abstract class BaseViewHolder<I> extends RecyclerView.ViewHolder implemen
         return longPressListener;
     }
 
-    public void setLongPressListener(BaseAdapter.LongPressListener longPressListener) {
+    public BaseViewHolder setLongPressListener(BaseAdapter.LongPressListener longPressListener) {
         this.longPressListener = longPressListener;
+        return this;
     }
 
     @Override

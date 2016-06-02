@@ -51,12 +51,10 @@ public class RecognizerEngine implements RecognitionListener {
 
     @Override
     public void onEndOfSpeech() {
-
     }
 
     @Override
     public void onError(int error) {
-        // TODO Auto-generated method stub
         String mError = "";
         switch (error) {
             case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
@@ -64,7 +62,6 @@ public class RecognizerEngine implements RecognitionListener {
                 break;
             case SpeechRecognizer.ERROR_NETWORK:
                 mError = " network";
-                //toast("Please check data bundle or network settings");
                 return;
             case SpeechRecognizer.ERROR_AUDIO:
                 mError = " audio";
@@ -88,14 +85,13 @@ public class RecognizerEngine implements RecognitionListener {
                 mError = " insufficient permissions";
                 break;
         }
-
-        EventBus.getDefault().post(new RecognizerEvent(null, true));
+        EventBus.getDefault().post(new RecognizerEvent(null, true, true));
     }
 
     @Override
     public void onResults(Bundle results) {
         List<String> result = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-        EventBus.getDefault().post(new RecognizerEvent(result, false));
+        EventBus.getDefault().post(new RecognizerEvent(result, false, true));
     }
 
     @Override
@@ -109,31 +105,33 @@ public class RecognizerEngine implements RecognitionListener {
     }
 
     public synchronized void startRecoginizer() {
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, context.getString(R.string.recognition_start));
-        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, SPEECH_TIME_MAX);
-        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, SPEECH_TIME_MAX);
-        intent.putExtra(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE);
-        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, context.getPackageName());
-        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, MAX_RESULTS);
-        if(mSpeechRecognizer != null){
-            destroy();
+        if (SpeechRecognizer.isRecognitionAvailable(context)) {
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, context.getString(R.string.recognition_start));
+            intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, SPEECH_TIME_MAX);
+            intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, SPEECH_TIME_MAX);
+            intent.putExtra(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE);
+            intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, context.getPackageName());
+            intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, MAX_RESULTS);
+
+            this.mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(context);
+            mSpeechRecognizer.setRecognitionListener(this);
+            mSpeechRecognizer.startListening(intent);
+        } else {
+            EventBus.getDefault().post(new RecognizerEvent(null, true, false));
         }
-        this.mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(context);
-        mSpeechRecognizer.setRecognitionListener(this);
-        mSpeechRecognizer.startListening(intent);
     }
 
     public synchronized void stopRecognizer() {
-        if (mSpeechRecognizer != null){
+        if (mSpeechRecognizer != null) {
             mSpeechRecognizer.stopListening();
             mSpeechRecognizer.cancel();
         }
     }
 
-    public synchronized void destroy(){
-        if (mSpeechRecognizer != null){
+    public synchronized void destroy() {
+        if (mSpeechRecognizer != null) {
             mSpeechRecognizer.stopListening();
             mSpeechRecognizer.cancel();
             mSpeechRecognizer.destroy();

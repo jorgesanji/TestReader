@@ -6,10 +6,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.util.List;
-
 import mino.com.sttapp.R;
 import mino.com.sttapp.ScreenNavigationHandler;
+import mino.com.sttapp.application.SttApplication;
 import mino.com.sttapp.core.view.MVPFragment;
 import mino.com.sttapp.model.assets.Phrase;
 import mino.com.sttapp.presenter.listphrases.ListPhrasesPresenter;
@@ -51,7 +50,6 @@ public class ListPhrasesFragment extends MVPFragment<ListPhrasesPresenter, ListP
         return listPhrasesScreen;
     }
 
-
     @Override
     protected ListPhrasesPresenter createPresenter() {
         return new ListPhrasesPresenter(ScreenNavigationHandler.getInstance());
@@ -64,14 +62,14 @@ public class ListPhrasesFragment extends MVPFragment<ListPhrasesPresenter, ListP
 
     @Override
     protected void onDidStart() {
-        getPresenter().getPhraseList();
+        listPhrasesScreen.setItems(SttApplication.getApp().getPhrases());
     }
 
     // RecognizerPresenter.View
 
     @Override
-    public void setPhrases(List<Phrase> phrases) {
-        listPhrasesScreen.setItems(phrases);
+    public void addPhrase(Phrase phrase) {
+        listPhrasesScreen.addItem(phrase);
     }
 
     // RecognizerScreen.Listener
